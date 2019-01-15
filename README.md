@@ -33,7 +33,7 @@ How do I know my application is running?
 To see documentation on which endpoints (URLs) you can access from the front-end, 
 visit http://localhost:9595/swagger-ui.html while your app is running.
 
-The front-end of your application can be accessed at http://localhost:9595/swagger-ui.html.
+The front-end of your application can be accessed at http://localhost:9595/index.html.
 **Note that your Java back-end must be running to access this!**
 
 ## Working on the application
