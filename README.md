@@ -2,6 +2,7 @@
 
 ## Setup
 Step 1: Fork this repository in GitHub
+
 Forking means to copy a repository that someone else owns in order for you to start 
 working on it without affecting the original. For more information, see 
 [here](https://help.github.com/articles/fork-a-repo/).
@@ -32,7 +33,7 @@ How do I know my application is running?
 To see documentation on which endpoints (URLs) you can access from the front-end, 
 visit http://localhost:9595/swagger-ui.html while your app is running.
 
-The front-end of your application can be accessed at http://localhost:9595/swagger-ui.html. 
+The front-end of your application can be accessed at http://localhost:9595/swagger-ui.html.
 **Note that your Java back-end must be running to access this!**
 
 ## Working on the application
@@ -48,6 +49,7 @@ Java back-end
 * Implement java methods to return the min, max, average, and median products by their price.
 
 Front-end
+
 User should be able to: 
 * Retrieve all warehouses and show the min, max, average, and median prices for each.
 * Retrieve all products and view in a table
