@@ -11,50 +11,50 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.spark.beans.Product;
 
-@RestController("/product")
+@RestController
 public class ProductController {
 
-	@GetMapping("/all")
+	@GetMapping("/product/all")
 	public ResponseEntity<List<Product>> findAll(){
 		throw new UnsupportedOperationException();
 	}
 
-	@PostMapping
+	@PostMapping("/product")
 	public ResponseEntity<Product> create(Product product){
 		throw new UnsupportedOperationException();
 	}
 
-	@PutMapping
+	@PutMapping("/product")
 	public ResponseEntity<Product> update(Product product){
 		throw new UnsupportedOperationException();
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/product")
 	public ResponseEntity<Void> delete(Product product){
 		throw new UnsupportedOperationException();
 	}
 	
-	@GetMapping("/sum")
+	@GetMapping("/product/sum")
 	public ResponseEntity<Double> sum(){
 		throw new UnsupportedOperationException();
 	}
 	
-	@GetMapping("/min")
+	@GetMapping("/product/min")
 	public ResponseEntity<Double> min(){
 		throw new UnsupportedOperationException();
 	}
 	
-	@GetMapping("/max")
+	@GetMapping("/product/max")
 	public ResponseEntity<Double> max(){
 		throw new UnsupportedOperationException();
 	}
 	
-	@GetMapping("/avg")
+	@GetMapping("/product/avg")
 	public ResponseEntity<Double> avg(){
 		throw new UnsupportedOperationException();
 	}
 	
-	@GetMapping("/median")
+	@GetMapping("/product/median")
 	public ResponseEntity<Double> median(){
 		throw new UnsupportedOperationException();
 	}
