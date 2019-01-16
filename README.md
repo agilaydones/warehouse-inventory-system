@@ -49,6 +49,7 @@ Implement the methods within the `AssociateImplementation` class.
 ### Java back-end
 * Implement Java methods to return the min, max, average, and median products by their price.
 * Note: these methods are to be implemented in the `com.revature.spark.todo.AssociateImplementation` class.
+* **Do not use any APIs to complete these methods.
 
 ### Front-end
 Implement the user interface with HTML/CSS and connect to the back-end using JavaScript and AJAX.
