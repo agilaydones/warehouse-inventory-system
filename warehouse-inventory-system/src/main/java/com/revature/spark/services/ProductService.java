@@ -1,49 +1,61 @@
 package com.revature.spark.services;
 
 import java.util.List;
-import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.spark.beans.Product;
-import com.revature.spark.beans.Warehouse;
+import com.revature.spark.repository.ProductRepository;
+import com.revature.spark.todo.AssociateImplementation;
 
+@Service
 public class ProductService {
 
+	/**
+	 * In Spring, we would likely @Autowired this property.
+	 * Just to keep the associate code free of Spring annotations,
+	 * we opted to simply instantiate the old-fashioned way.
+	 */
+	private AssociateImplementation associateImplementation = new AssociateImplementation();
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
 	public List<Product> findAll(){
-		throw new UnsupportedOperationException();
+		return productRepository.findAll();
 	}
 
 	public Product create(Product product){
-		throw new UnsupportedOperationException();
+		return productRepository.save(product);
 	}
 
 	public Product update(Product product){
-		throw new UnsupportedOperationException();
+		return productRepository.save(product);
 	}
 	
 	public void delete(Product product){
-		throw new UnsupportedOperationException();
+		productRepository.delete(product);
 	}
 	
 	public Double sum(){
-		// List list = productRepository.findAll();
-		// return associateCode.sum(list);
-		throw new UnsupportedOperationException();
+		return associateImplementation.sum(productRepository.findAll());
 	}
 	
 	public Double min(){
-		throw new UnsupportedOperationException();
+		return associateImplementation.min(productRepository.findAll());
 	}
 	
 	public Double max(){
-		throw new UnsupportedOperationException();
+		return associateImplementation.max(productRepository.findAll());
 	}
 	
 	public Double avg(){
-		throw new UnsupportedOperationException();
+		return associateImplementation.avg(productRepository.findAll());
 	}
 	
 	public Double median(){
-		throw new UnsupportedOperationException();
+		return associateImplementation.median(productRepository.findAll());
 	}
 	
 }
