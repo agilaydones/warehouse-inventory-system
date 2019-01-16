@@ -60,6 +60,6 @@ User should be able to:
 * Create a product and assign it to a warehouse
 * Update a product
 * Delete a product
-* BONUS: show the total assets in the system (all warehouses)
+* BONUS: show the total assets for each warehouse
 
 Good luck :)
