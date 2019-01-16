@@ -16,7 +16,6 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.mvn
 
 # External tool builders
 .externalToolBuilders/
