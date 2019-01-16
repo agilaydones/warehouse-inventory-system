@@ -3,7 +3,9 @@ package com.revature.spark;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.assertj.core.util.Arrays;
 import org.junit.Test;
@@ -12,76 +14,128 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.revature.spark.beans.Product;
+import com.revature.spark.beans.Warehouse;
 import com.revature.spark.todo.AssociateImplementation;
 
 @RunWith(Parameterized.class)
 public class AssociateImplementationTest {
 	
 	static AssociateImplementation testObj = new AssociateImplementation();
+	static double precision = 0.01; // 
 	
-	public AssociateImplementationTest(List<Product> products, double sum, double min, double max, double avg, double median) {
+	public AssociateImplementationTest(List<Product> products, double sum, double min, double max, double avg, double median, Map<Warehouse,Double> totals) {
 		this.productList = products;
 		this.sum = sum;
 		this.min = min;
 		this.max = max;
 		this.avg = avg;
 		this.median = median;
+		this.warehouseTotals = totals;
 	} 
 	
 	List<Product> productList;
 	
 	double sum;
-	
 	double min;
-	
 	double max;
-	
 	double avg;
-	
 	double median;
+	Map<Warehouse, Double> warehouseTotals;
 	
 	@Parameters
 	public static List<Object[]> generateTestData() {
+		Warehouse wha = new Warehouse(1, "Warehouse A", "123 Revature Ln");
+		Warehouse whb = new Warehouse(2, "Warehouse B", "456 Revature Ln");
+		Warehouse whc = new Warehouse(3, "Warehouse C", "789 Revature Ln");
 		List<Object[]> list = new ArrayList<>();
 		// first test case
 		list.add(new Object[] {
 				Arrays.asList(new Object[] {
-						new Product(1, "A", 1.25, 1, null),
-						new Product(2, "B", 5.50, 1, null),
-						new Product(3, "C",10.00, 1, null),
-						new Product(4, "D", 0.15, 1, null),
-						new Product(5, "E", 3.25, 1, null),
-						new Product(6, "F",99.99, 1, null),
-						new Product(7, "G",25.13, 1, null),
-						new Product(8, "H",49.78, 1, null),
-						new Product(9, "I",12.21, 1, null),
-						new Product(10,"J", 5.00, 1, null)	
+						new Product(1, "A", 1.25, 10, wha),
+						new Product(2, "B", 5.50, 3, whb),
+						new Product(3, "C",10.00, 0, wha),
+						new Product(4, "D", 0.15, 20, wha),
+						new Product(5, "E", 3.25, 1, whc),
+						new Product(6, "F",99.99, 5, wha),
+						new Product(7, "G",25.13, 8, whb),
+						new Product(8, "H",49.78, 2, whc),
+						new Product(9, "I",12.21, 9, wha),
+						new Product(10,"J", 5.00, 11, whb)	
 				}),
-				212.26, // sum
+				1000.69, // sum
 				0.15, // min
 				99.99, // max
 				21.23, // avg
-				7.75  // median
+				7.75,  // median
+				// creating a subclass on the fly to directly instantiate a map
+				new HashMap<Warehouse,Double>() {{
+					put(wha, 625.34);
+					put(whb, 272.54);
+					put(whc, 102.81);
+				}}
 		});
 		// second test case
 		list.add(new Object[] {
 				Arrays.asList(new Object[] {
-						new Product(1, "A", 1.01, 1, null),
-						new Product(2, "B", 7.29, 1, null),
-						new Product(3, "C",11.00, 1, null),
-						new Product(4, "D",62.15, 1, null),
-						new Product(5, "E", 9.75, 1, null),
-						new Product(6, "F",13.33, 1, null),
-						new Product(7, "G",27.54, 1, null),
-						new Product(8, "H",41.88, 1, null),
-						new Product(9, "I", 9.21, 1, null),
-						new Product(10,"J", 4.00, 1, null)	
+						new Product(1, "A", 1.01, 100, wha),
+						new Product(2, "B", 7.29, 40, wha),
+						new Product(3, "C",11.00, 10, whb),
+						new Product(4, "D",62.15, 2, whc),
+						new Product(5, "E", 9.75, 3, wha),
+						new Product(6, "F",13.33, 3, whb),
+						new Product(7, "G",27.54, 3, whb),
+						new Product(8, "H",41.88, 5, whb),
+						new Product(9, "I", 9.21, 6, wha)
 				}),
-				187.16, // sum
+				1043.42, // sum
 				1.01, // min
 				62.15, // max
-				18.72, // avg
-				10.38  // median
+				20.35, // avg
+				11.00,  // median
+				new HashMap<Warehouse,Double>() {{
+					put(wha, 477.11);
+					put(whb, 442.01);
+					put(whc, 124.30);
+				}}
+		});
+		// third test case
+		list.add(new Object[] {
+				Arrays.asList(new Object[] {
+						new Product(1, "A", 0.01, 1000, wha),
+						new Product(2, "B", 1.99, 3, wha),
+						new Product(3, "C", 0.99, 0, whb),
+						new Product(4, "D", 9.99, 20, whc),
+						new Product(5, "E", 10, 1, wha),
+						new Product(6, "F", 15, 5, whb),
+						new Product(7, "G", 20, 8, whb),
+						new Product(8, "H", 50, 2, whb)
+				}),
+				560.77, // sum
+				0.01, // min
+				50.00, // max
+				13.50, // avg
+				10.00,  // median
+				new HashMap<Warehouse,Double>() {{
+					put(wha, 284.80);
+					put(whb, 165.97);
+					put(whc, 110.00);
+				}}
+		});
+		// last test case
+		list.add(new Object[] {
+				Arrays.asList(new Object[] {
+						new Product(1, "A", 2.55, 5, wha)
+				}),
+				12.75, // sum
+				2.55, // min
+				2.55, // max
+				2.55, // avg
+				2.55,  // median
+				new HashMap<Warehouse,Double>() {{
+					put(wha, 12.75);
+					put(whb, 0.00);
+					put(whc, 0.00);
+				}}
 		});
 		return list;
 	}
@@ -118,6 +172,11 @@ public class AssociateImplementationTest {
 	
 	@Test
 	public void totalAssetsPerWarehouseTest(){
+		Map<Warehouse, Double> testTotal = testObj.totalAssetsPerWarehouse(productList);
+		for (Warehouse entry : testTotal.keySet()) {
+			// all the totals from each warehouse should match
+			assertEquals(testTotal.get(entry), warehouseTotals.get(entry), 0.01);
+		}
 	}
 
 }
