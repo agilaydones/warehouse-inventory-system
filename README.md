@@ -19,6 +19,7 @@ cd warehouse-inventory-system/
 Step 3: Import the project into workspace
 * File > Open Projects From File System... (this will auto-detect which kind of project you're importing)
 * Click "Directory" and find the location of the folder
+* Note: your workspace directory must be different than the project directory.
 
 ## Starting the application
 1. Click "Play" in your IDE (Eclipse / STS)
@@ -45,10 +46,13 @@ You can also edit the `src/main/resources/static` folder for your HTML, CSS, and
 Implement the methods within the `AssociateImplementation` class.
 
 ## Project requirements
-Java back-end
-* Implement java methods to return the min, max, average, and median products by their price.
+### Java back-end
+* Implement Java methods to return the min, max, average, and median products by their price.
+* Note: these methods are to be implemented in the `com.revature.spark.todo.AssociateImplementation` class.
+* **Do not use any APIs to complete these methods.**
 
-Front-end
+### Front-end
+Implement the user interface with HTML/CSS and connect to the back-end using JavaScript and AJAX.
 
 User should be able to: 
 * Retrieve all warehouses and show the min, max, average, and median prices for each.
@@ -56,6 +60,6 @@ User should be able to:
 * Create a product and assign it to a warehouse
 * Update a product
 * Delete a product
-* BONUS: show the total assets in the system (all warehouses)
+* BONUS: show the total assets for each warehouse
 
 Good luck :)
