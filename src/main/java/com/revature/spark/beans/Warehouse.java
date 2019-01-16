@@ -3,18 +3,23 @@ package com.revature.spark.beans;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Warehouse {
 
 	@Id
-	@Column(name="warehouse_id")
+	@Column(name="warehouse_id", nullable=false)
+	@Min(value=0)
 	private int id;
 	
-	@Column(name="warehouse_name")
+	@Column(name="warehouse_name", nullable=false)
+	@NotBlank
 	private String name;
 	
-	@Column
+	@Column(nullable=false)
+	@NotBlank
 	private String address;
 	
 	public Warehouse() {

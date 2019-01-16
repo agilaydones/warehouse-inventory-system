@@ -2,6 +2,8 @@ package com.revature.spark.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,17 +29,17 @@ public class ProductController {
 	}
 
 	@PostMapping("/product")
-	public ResponseEntity<Product> create(@RequestBody Product product){
+	public ResponseEntity<Product> create(@Valid @RequestBody Product product){
 		return new ResponseEntity<>(service.create(product), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/product")
-	public ResponseEntity<Product> update(@RequestBody Product product){
+	public ResponseEntity<Product> update(@Valid @RequestBody Product product){
 		return new ResponseEntity<>(service.update(product), HttpStatus.NO_CONTENT);
 	}
 	
 	@DeleteMapping("/product")
-	public ResponseEntity<Void> delete(@RequestBody Product product){
+	public ResponseEntity<Void> delete(@Valid @RequestBody Product product){
 		service.delete(product);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

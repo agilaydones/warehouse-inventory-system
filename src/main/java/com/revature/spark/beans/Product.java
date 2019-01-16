@@ -2,28 +2,37 @@ package com.revature.spark.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Product {
 
 	@Id
-	@Column(name = "product_id")
+	@Column(name = "product_id", nullable=false)
+	@Min(value=0)
 	private int id;
 	
-	@Column(name="product_name")
+	@Column(name="product_name", nullable=false)
+	@NotBlank
 	private String name;
 	
-	@Column
+	@Column(nullable=false)
+	@Min(value=0)
 	private double price;
 	
-	@Column
+	@Column(nullable=false)
+	@Min(value=0)
 	private int quantity;
 	
-	@ManyToOne
-	@JoinColumn(name="warehouse_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="warehouse_id", nullable=false)
+	@NotNull
 	private Warehouse warehouse;
 	
 	public Product() {
