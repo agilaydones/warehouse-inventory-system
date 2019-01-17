@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: warehouse-inventory
 server:
   port: 9595
   
