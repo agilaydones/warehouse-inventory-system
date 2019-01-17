@@ -43,6 +43,7 @@ public class AssociateImplementationTest {
 	double median;
 	Map<Warehouse, Double> warehouseTotals;
 
+	@SuppressWarnings("serial")
 	@Parameters
 	public static List<Object[]> generateTestData() {
 		Warehouse wha = new Warehouse(1, "Warehouse A", "123 Revature Ln");
