@@ -25,11 +25,7 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double sum(List<Product> products) {
-		double sum = 0.0;
-		for(Product prod : products) {
-			sum += prod.getPrice() * prod.getQuantity();
-		}
-		return sum;
+		return null;
 	}
 
 	/**
@@ -39,13 +35,7 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double min(List<Product> products) {
-		double min = Double.MAX_VALUE;
-		for(Product prod : products) {
-			if(prod.getPrice() < min) {
-				min = prod.getPrice();
-			}
-		}
-		return min;
+		return null;
 	}
 
 	/**
@@ -55,13 +45,7 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double max(List<Product> products) {
-		double max = Double.MIN_VALUE;
-		for(Product prod : products) {
-			if(prod.getPrice() > max) {
-				max = prod.getPrice();
-			}
-		}
-		return max;
+		return null;
 	}
 
 	/**
@@ -71,11 +55,7 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double avg(List<Product> products) {
-		double sum = 0.0;
-		for(Product prod : products) {
-			sum += prod.getPrice();
-		}
-		return sum/products.size();
+		return null;
 	}
 
 	/**
@@ -85,11 +65,7 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double median(List<Product> products) {
-		Collections.sort(products);
-		if (products.size()% 2 == 0)
-			return (products.get(products.size()/2).getPrice() + products.get(products.size()/2 - 1).getPrice())/2;
-		else
-			return products.get(products.size()/2).getPrice();
+		return null;
 	}
 
 	/**
@@ -118,15 +94,7 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Map<Warehouse, Double> totalAssetsPerWarehouse(List<Product> products) {
-		Map<Warehouse, Double> map = new HashMap<>();
-		for(Product p : products) {
-			if(map.containsKey(p.getWarehouse())) {
-				map.put(p.getWarehouse(), map.get(p.getWarehouse()) + (p.getPrice() * p.getQuantity() ));
-			}else {
-				map.put(p.getWarehouse(), (p.getPrice() * p.getQuantity()));
-			}
-		}
-		return map;
+		return null;
 	}
 
 }
