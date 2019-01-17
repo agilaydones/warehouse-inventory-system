@@ -1,5 +1,6 @@
 package com.revature.spark.todo;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,11 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double sum(List<Product> products) {
-		return 0.0;
+		double sum = 0.0;
+		for(Product prod : products) {
+			sum += prod.getPrice() * prod.getQuantity();
+		}
+		return sum;
 	}
 
 	/**
@@ -34,7 +39,13 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double min(List<Product> products) {
-		return 0.0;
+		double min = Double.MAX_VALUE;
+		for(Product prod : products) {
+			if(prod.getPrice() < min) {
+				min = prod.getPrice();
+			}
+		}
+		return min;
 	}
 
 	/**
@@ -44,7 +55,13 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double max(List<Product> products) {
-		return 0.0;
+		double max = Double.MIN_VALUE;
+		for(Product prod : products) {
+			if(prod.getPrice() > max) {
+				max = prod.getPrice();
+			}
+		}
+		return max;
 	}
 
 	/**
@@ -54,7 +71,11 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double avg(List<Product> products) {
-		return 0.0;
+		double sum = 0.0;
+		for(Product prod : products) {
+			sum += prod.getPrice();
+		}
+		return sum/products.size();
 	}
 
 	/**
@@ -64,7 +85,11 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double median(List<Product> products) {
-		return 0.0;
+		Collections.sort(products);
+		if (products.size()% 2 == 0)
+			return (products.get(products.size()/2).getPrice() + products.get(products.size()/2 - 1).getPrice())/2;
+		else
+			return products.get(products.size()/2).getPrice();
 	}
 
 	/**
@@ -74,17 +99,34 @@ public class AssociateImplementation {
 	 * 
 	 * Let's look at some example data:
 	 * 
-	 * Warehouse A Product | Price | Quantity Rice | $3.40 | 8 Beans | $1.50 | 3
-	 * ------------------------------------ Warehouse B Product | Price | Quantity
-	 * TV | $50.25 | 4 Speaker | $15.10 | 6 -----------------------------------
-	 * Result: Warehouse A : $31.70 Warehouse B : $291.60
+	 * Warehouse A 
+	 * Product 	| Price | Quantity 
+	 * Rice 	| $3.40 | 8 
+	 * Beans 	| $1.50 | 3
+	 * ------------------------------------ 
+	 * Warehouse B 
+	 * Product 	| Price 	| Quantity
+	 * TV 		| $50.25 	| 4 
+	 * Speaker 	| $15.10 	| 6 
+	 * -----------------------------------
+	 * Result: 
+	 * Warehouse A : $31.70 
+	 * Warehouse B : $291.60
 	 * 
 	 * 
 	 * @param products
 	 * @return
 	 */
 	public Map<Warehouse, Double> totalAssetsPerWarehouse(List<Product> products) {
-		return new HashMap<>();
+		Map<Warehouse, Double> map = new HashMap<>();
+		for(Product p : products) {
+			if(map.containsKey(p.getWarehouse())) {
+				map.put(p.getWarehouse(), map.get(p.getWarehouse()) + (p.getPrice() * p.getQuantity() ));
+			}else {
+				map.put(p.getWarehouse(), (p.getPrice() * p.getQuantity()));
+			}
+		}
+		return map;
 	}
 
 }

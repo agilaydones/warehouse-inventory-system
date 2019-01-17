@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Product {
+public class Product implements Comparable<Product>{
 
 	@Id
 	@Column(name = "product_id", nullable=false)
@@ -134,6 +134,17 @@ public class Product {
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", warehouse="
 				+ warehouse + "]";
+	}
+
+	@Override
+	public int compareTo(Product o) {
+		if(this.price > o.price) {
+			return 1;
+		}else if(this.price < o.price) {
+			return -1;
+		}else {
+			return 0;
+		}
 	}
 	
 }
