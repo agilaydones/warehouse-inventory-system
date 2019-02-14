@@ -1,20 +1,26 @@
 package com.revature.spark.todo;
 
+//import com.revature.spark.beans;
+
+import java.lang.reflect.Array;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import com.revature.spark.beans.Product;
 import com.revature.spark.beans.Warehouse;
 
+import com.revature.spark.beans.*;
+
 /**
  * Within this class, you will implement the logic to calculate data for various
  * reports.
  * 
- * @author Your Name Here
+ * @author Agilay Dones
  * 
  */
 public class AssociateImplementation {
-
+//Double productArr;
 	/**
 	 * Find the sum of all product assets. Remember that quantity times price is the
 	 * total value for a given product.
@@ -22,8 +28,23 @@ public class AssociateImplementation {
 	 * @param products
 	 * @return
 	 */
+	 
+	
+	
 	public Double sum(List<Product> products) {
-		return null;
+	double value = 0; 
+		
+		for(int i = 0; i < products.size(); i++ ) {
+		double priceP = products.get(i).getPrice();
+		int quantP = products.get(i).getQuantity();
+		value += priceP*quantP;
+		
+		}
+		
+		return value;
+		
+		
+		
 	}
 
 	/**
@@ -33,9 +54,24 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double min(List<Product> products) {
-		return null;
+		double min = products.get(0).getPrice();
+		for(int i = 0; i < products.size(); i++) {
+			if(min > products.get(i).getPrice()) {
+				min = products.get(i).getPrice();
+			}
+			
+//		
+					
 	}
-
+		
+			
+		return min;
+		
+		
+	}
+		
+//	return null;
+	
 	/**
 	 * Find the highest product price out of all products.
 	 * 
@@ -43,7 +79,17 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double max(List<Product> products) {
-		return null;
+		
+		double maxP = products.get(0).getPrice();
+		for(int i = 0; i < products.size(); i++) {
+			if(maxP < products.get(i).getPrice()) {
+				maxP = products.get(i).getPrice();
+			}
+			
+//		
+					
+	}
+		return maxP;	
 	}
 
 	/**
@@ -53,7 +99,13 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double avg(List<Product> products) {
-		return null;
+		double avg = 0;
+		double sum = 0;
+		for(int i = 0; i < products.size(); i++) {
+			sum += products.get(i).getPrice();
+			}
+		avg = sum/products.size();
+		return avg;
 	}
 
 	/**
@@ -63,7 +115,32 @@ public class AssociateImplementation {
 	 * @return
 	 */
 	public Double median(List<Product> products) {
-		return null;
+	int n = products.size();
+	double[] myArr = new double[products.size()];
+	double med = 0;
+	for(int i = 0; i<n; i++) {
+		myArr[i] = products.get(i).getPrice();
+	}
+		for (int i = 0; i < myArr.length-1; i++) {	
+			for (int j = 0; j < myArr.length-1-i; j++) {
+				if (myArr[j]>myArr[j+1]){ 
+					double temp = myArr[j];
+					myArr[j] = myArr[j+1];
+					myArr[j+1] =temp; 
+				}
+			}
+		}
+		
+		
+		if(myArr.length%2==0) {
+		double right = myArr[(n/2)];
+		double left = myArr[(n/2)-1];
+			med = (left + right)/2;
+		}else if(myArr.length%2!=0) {
+			med = myArr[(n/2)];
+		}
+
+		return med;
 	}
 
 	/**

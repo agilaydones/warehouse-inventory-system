@@ -1,0 +1,73 @@
+<Html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel= "stylesheet" type="text/css" href = "assets-style.css">
+</head>
+
+<body>
+
+
+<ul class="nav nav-tabs navbar-light bg-light">
+  <li class="nav-item">
+    <a class="nav-link active" href="morphing.html">Asset Management</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="index.html">Product Information</a>
+  </li>
+</ul>
+
+
+
+<div class="container">
+
+
+<center>
+<h2>Add A new Product</h2>
+<div>
+<input placeholder="Product ID" type="number" id = "id"/>
+<input placeholder="Product Name" type="text" id = "name"/>
+<input placeholder="Price" type="number" id = "price"/>
+<input placeholder="Quantity" type="number" id = "quantity"/>
+<input placeholder="Warehouse Address" type="text" id = "warehouseAddress"/>
+<input placeholder="Warehouse ID"  type="number" id = "warehouseId"/>
+<input placeholder="Warehouse Name" type="text" id = "warehouseName"/>
+<button id="prodButton" class = "butin" >New Product</button>
+</div>
+</center>
+<div>
+<hr>
+</div>
+<center>
+<input placeholder="Warehouse Address" id = "wareAd">
+<input placeholder="Warehouse Name" id = "wareName">
+
+<label>
+<select id = "putsel">
+<option></option>
+</select>
+</label>
+
+
+
+
+
+<h3 id = "prod"></h3>
+<input placeholder="Change name" type="text" id = "prodPutName">
+<input placeholder="Change price" type="number" id = "prodPutPrice">
+<input placeholder="Change Quantity" type="number" id = "prodPutQuantity">
+<button id="putButton" class="butt">Update</button>
+<button id="deleteButton" class = "buttt">Delete</button>
+</center>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+<script src="delete.js"></script>
+<script src="put.js"></script>
+<script src="post.js"></script>
+</Html>
